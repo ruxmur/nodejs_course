@@ -1,4 +1,5 @@
 const express = require('express');
+const morgan = require('morgan');
 
 // express app
 const app = express();
@@ -9,11 +10,16 @@ app.set('view engine', 'ejs');
 // listen for requests
 app.listen(3000);
 
+// middleware & static files
+app.use(express.static('public'));
+app.use(morgan('dev'));
+
 app.get('/', (req, res) => {
   const blogs = [
-    { title: 'Guguta finds hats', snippet: 'Lorem ipsum dolor sit amet consectetur' },
-    { title: 'Alice finds stars', snippet: 'Lorem ipsum dolor sit amet consectetur' },
-    { title: 'How to defeat monster', snippet: 'Lorem ipsum dolor sit amet consectetur' },
+    { title: 'Code formatting', snippet: 'Shift + Option + F' },
+    { title: 'Copy line down', snippet: 'Shift + Option + ↓' },
+    { title: 'Move line up', snippet: 'Option + ↑' },
+    { title: 'Lock the screen', snippet: 'Control + Command + Q' },
   ];
   res.render('index', { title: 'Home', blogs });
 });
