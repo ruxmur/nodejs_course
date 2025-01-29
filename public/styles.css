@@ -10,6 +10,7 @@
       padding: 0;
       text-decoration: none;
       color: #222;
+      margin-bottom: 20px;
     }
 
     /* nav & footer styles */
@@ -47,14 +48,39 @@
     }
     h3{
       text-transform: capitalize;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
     }
     .content{
       margin-left: 20px;
     }
 
     /* index styles */
+    .blogs a{
+      display: block;
+      margin: 40px 0;
+      padding-left: 30px;
+      border-left: 6px solid rgb(122, 32, 50);
+    }
+    .blogs a:hover h3{
+      color: rgb(122, 32, 50);
+    }
+
     /* details styles */
+    .details{
+      position: relative;
+    }
+    .delete{
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-radius: 50%;
+      padding: 8px;
+    }
+    .delete:hover{
+      cursor: pointer;
+      box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+    }
+
     /* create styles */
     .create-blog form{
       max-width: 400px;
