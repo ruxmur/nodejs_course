@@ -4,7 +4,6 @@
       margin: 20px auto;
       padding: 0 20px;
       font-family: 'Noto Serif', serif;
-      max-width: 1200px;
     }
     p, h1, h2, h3, a, ul{
       margin: 0;
@@ -55,9 +54,7 @@
     }
 
     /* index styles */
-
     /* details styles */
-
     /* create styles */
     .create-blog form{
       max-width: 400px;
@@ -79,8 +76,8 @@
     }
     .create-blog button{
       margin-top: 20px;
-      background: crimson;
-      color: white;
+      background: rgb(149, 146, 147);
+      color: rgb(0, 0, 0);
       padding: 6px;
       border: 0;
       font-size: 1.2em;
