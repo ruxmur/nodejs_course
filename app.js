@@ -1,7 +1,12 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-const Blog = require('./models/blog');
+const blogRoutes = require('./routes/blogRoutes');
+
+// note: 
+// run 'nodemon app' to start the server
+// run 'mongod' to start the mongodb server
+// go to http://localhost:3000/blogs
 
 // express app
 const app = express();
@@ -33,36 +38,7 @@ app.get('/about', (req, res) => {
 });
 
 // blog routes
-app.get('/blogs', (req, res) => {
-    Blog.find().sort({ createdAt: -1 })
-        .then(result => res.render('index', { title: 'All Blogs', blogs: result }))
-        .catch(err => console.log(err));
-});
-
-app.get('/blogs/create', (req, res) => {
-    res.render('create', { title: 'Create a new blog' });
-});
-
-app.post('/blogs', (req, res) => {
-    const blog = new Blog(req.body);
-    blog.save()
-        .then(() => res.redirect('/blogs'))
-        .catch(err => console.log(err));
-});
-
-app.get('/blogs/:id', (req, res) => {
-    const id = req.params.id;
-    Blog.findById(id)
-        .then(result => res.render('details', { title: 'Blog Details', blog: result }))
-        .catch(err => res.status(404).render('404', { title: 'Blog not found' }));  
-});
-
-app.delete('/blogs/:id', (req, res) => {
-    const id = req.params.id;
-    Blog.findByIdAndDelete(id)
-        .then(result => res.json({ redirect: '/blogs' }))
-        .catch(err => console.log(err));  
-});
+app.use('/blogs', blogRoutes);
 
 // 404 page
 app.use((req, res) => {
